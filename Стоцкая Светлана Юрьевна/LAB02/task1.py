@@ -2,7 +2,6 @@ def list_reduce(lst):
     avg_line = 0
     final_list = []
     for line in lst:
-        print(line)
         avg_line += len(line)
     avg_line /= len(lst)
     for smth in lst:
@@ -12,8 +11,8 @@ def list_reduce(lst):
 
 if __name__ == '__main__':
     strings_list = []
-    condition = ""
-    while condition != "стоп":
+    condition = "fine"
+    while condition:
         strings_list.append(input("Введите строку "))
-        condition = input("Если строки закончились, напишите 'стоп' ")
+        condition = input("Если строки закончились, нажмите Enter ")
     print(list_reduce(strings_list))
