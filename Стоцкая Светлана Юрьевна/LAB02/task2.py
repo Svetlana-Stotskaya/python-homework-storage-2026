@@ -1,19 +1,24 @@
 def increase(number_seq):
-    for value in range(len(number_seq)):
-        number_seq[value] = int(number_seq[value])
+    temp_numbers = []
+    for value in number_seq:
+        try:
+            temp_numbers.append(int(value))
+        except ValueError:
+            return "Список не был отсортирован, так как не все значения целые числа"
     decrease = input("Если хотите сортировку в порядке возрастания, введите 1,"
                      "если в порядке убывания, введите 0 ")
     if decrease == "1":
-        number_seq.sort()
-        return number_seq
+        temp_numbers.sort()
+        return temp_numbers
     elif decrease == "0":
-        number_seq.sort()
-        number_seq.reverse()
-        return number_seq
+        temp_numbers.sort()
+        temp_numbers.reverse()
+        return temp_numbers
     else:
         return "Вы ввели неподходящее значение!"
 
 
 if __name__ == '__main__':
-    numb_list = input("Введите набор чисел, разделённых пробелами ").split()
+    number_group = input("Введите набор чисел, разделённых пробелами ")
+    numb_list = number_group.split()
     print(increase(numb_list))
