@@ -8,5 +8,5 @@ def multiply(*args):
     print(result)
 
 if __name__ == '__main__':
-    numbers = input("Введите набор чисел через пробел ").split()
+    numbers = [1, 23, "right"]
     multiply(*numbers)
