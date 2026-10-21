@@ -1,5 +1,5 @@
-ALL_VOWELS = ["a", "e", "i", "o", "u", "y",
-              "а", "е", "ё", "и", "о", "у", "ы", "э", "ю", "я"]
+ALL_VOWELS = ("a", "e", "i", "o", "u", "y",
+              "а", "е", "ё", "и", "о", "у", "ы", "э", "ю", "я")
 
 def many_vowels(**kwargs):
     vowel = 0
@@ -15,10 +15,5 @@ def many_vowels(**kwargs):
 
 
 if __name__ == '__main__':
-    condition = ""
-    input_dict = {}
-    while condition != "стоп":
-        input_key = input("Введите ключ ")
-        input_dict[input_key] = input("Введите значение аргумента ")
-        condition = input("Если аргументы закончились, напишите 'стоп' ")
+    input_dict = {"cat":"meow meow", "do": "many tasks", "hide": "ok"}
     many_vowels(**input_dict)
