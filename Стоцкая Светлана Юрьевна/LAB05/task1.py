@@ -40,4 +40,5 @@ if __name__ == "__main__":
     if new_age == CHECK_FAIL:
         raise argparse.ArgumentError(args.age, "Введите не любое число, а число из данного диапазона.")
     if args.introduction:
-        print(introduction(args.name, new_age))
+        final_string = introduction(args.name, new_age)
+        print(final_string)
