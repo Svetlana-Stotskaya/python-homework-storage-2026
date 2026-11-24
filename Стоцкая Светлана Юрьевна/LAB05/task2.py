@@ -3,6 +3,7 @@
 import argparse
 
 ACCURACY = 2
+OPERATION_VARIANTS = ("add", "sub", "mul", "div", None)
 
 def operations(operation, value_1, value_2):
     """
@@ -13,18 +14,19 @@ def operations(operation, value_1, value_2):
     :return: Результат сложения, вычитания, умножения или деления чисел.
     :raises ValueError: Если происходит деление на ноль или данная операция не определена.
     """
-    if operation == "add":
-        return value_1 + value_2
-    elif operation == "sub":
-        return value_1 - value_2
-    elif operation == "mul":
-        return value_1 * value_2
-    elif operation == "div":
-        if value_2 == 0:
-            raise ValueError("На ноль делить нельзя!")
-        return value_1 / value_2
-    else:
-        raise ValueError(f"Данная операция {operation} не определена.")
+    match operation:
+        case "add":
+            return value_1 + value_2
+        case "sub":
+            return value_1 - value_2
+        case "mul":
+            return value_1 * value_2
+        case "div":
+            if value_2 == 0:
+                raise ValueError("На ноль делить нельзя!")
+            return value_1 / value_2
+        case _:
+            raise ValueError(f"Данная операция {operation} не определена.")
 
 def save_to_file(some_file, value):
     """
@@ -41,7 +43,7 @@ if __name__ == "__main__":
     parser.add_argument("x", type = float, help = "Первое число")
     parser.add_argument("y", type = float, help = "Второе число")
     parser.add_argument("-o", "--operation", type = str, default = None,
-        choices = ["add", "sub", "mul", "div", None], help = "Операции сложения, вычитания, умножения и деления")
+        choices = OPERATION_VARIANTS, help = "Операции сложения, вычитания, умножения и деления")
     parser.add_argument("-a", "--accuracy", type = int, default = ACCURACY, help = "Количество знаков после запятой")
     parser.add_argument("-f", "--file", type = str, help = "Путь до файла для сохранения результата операции")
     args = parser.parse_args()
