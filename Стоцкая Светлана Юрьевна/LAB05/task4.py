@@ -1,4 +1,5 @@
 import argparse
+
 def copy_file(input_file, output_file, replace_string, footer, rewrite):
     """
     Копирует содержимое одного файла в другой файл с небольшими изменениями.
@@ -43,7 +44,7 @@ if "__main__" == __name__:
     parser.add_argument("-o", "--output", type = str, help = "Путь до файла для записи")
     parser.add_argument("-r", "--replace", type = str, help = "Строка замены одной подстроки на другую в формате OLD=NEW")
     parser.add_argument("-a", "--append-footer", type = str, default = None, help = "Строка для добавления в конец файла")
-    parser.add_argument("-w", "--writing", type = str, default = "no", choices = ["yes", "no"], help = "Аргумент для перезаписи файла вместо записи в конец")
+    parser.add_argument("-w", "--writing", type = str, default = "no", choices = ("yes", "no"), help = "Аргумент для перезаписи файла вместо записи в конец")
     args = parser.parse_args()
     number = copy_file(args.input, args.output, args.replace, args.append_footer, args.writing)
     if number != 0:
